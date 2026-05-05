@@ -17,9 +17,9 @@ pip install langchain langchain-runpod langchain-community langchain-classic fai
 
 Place your PDF documents in the `data/` folder:
 
-```bash
+bash
 cp your_document.pdf data/
-```
+
 
 ### 3. Configure API Keys
 
@@ -30,9 +30,9 @@ Open `runpod_rag_pdf.ipynb` and update:
 
 ### 4. Run the Notebook
 
-```bash
+bash
 jupyter notebook runpod_rag_pdf.ipynb
-```
+
 
 Run all cells sequentially and start asking questions about your documents!
 
@@ -75,22 +75,22 @@ Run all cells sequentially and start asking questions about your documents!
 
 
 ### Adjust Chunk Size
-```python
+python
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1500,      # Increase for more context per chunk
     chunk_overlap=300,    # Increase to preserve more context
 )
-```
+
 
 ### Change Number of Retrieved Documents
-```python
+python
 retriever=vectorstore.as_retriever(
     search_kwargs={"k": 5}  # Retrieve top 5 instead of 3
 )
-```
+
 
 ### Modify LLM Parameters
-```python
+python
 llm = ChatRunPod(
     endpoint_id=RUNPOD_LLM_ENDPOINT_ID,
     model_kwargs={
@@ -98,12 +98,12 @@ llm = ChatRunPod(
         "max_tokens": 3000,    # Longer responses
     }
 )
-```
+
 
 When you add new PDFs or modify existing ones:
 
 Delete the `vector_store/` folder:
-   ```bash
+bash
    rm -rf vector_store/
 
 
